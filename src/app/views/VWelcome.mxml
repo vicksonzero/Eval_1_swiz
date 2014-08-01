@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+  Created by Dickson on 17/6/2014.
+-->
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+    <fx:Script><![CDATA[
+        import app.events.EApp;
+
+        [Dispatcher]
+        public var _dispatcher:IEventDispatcher;
+
+
+        private function changeView():void{
+            //WELCOME_BUTTON_PRESSED
+            trace("welcome button is pressed");
+            var t_e_ga:EApp = new EApp (EApp.WELCOME_BUTTON_PRESSED);
+            this._dispatcher.dispatchEvent (t_e_ga);
+        }
+
+    ]]></fx:Script>
+    <s:Group top="0" bottom="0" left="0" right="0">
+        <s:Button
+                label="Hello, world!"
+                horizontalCenter="0" verticalCenter="0"
+                click="this.changeView()"
+                />
+
+    </s:Group>
+</s:View>

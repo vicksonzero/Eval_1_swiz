@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:swiz="http://swiz.swizframework.org" xmlns:app_beans="app.beans.*">
+    <fx:Declarations>
+
+    <swiz:Swiz>
+        <swiz:beanProviders>
+            <app_beans:BApp />
+        </swiz:beanProviders>
+        <swiz:config>
+            <!-- The eventPackages value tells Swiz the path to your Event classes,
+            and viewPackages is an optional value that speeds up the processing of display classes. -->
+            <swiz:SwizConfig
+                    eventPackages="app.events.*"
+                    viewPackages="app.views.*" />
+        </swiz:config>
+
+    </swiz:Swiz>
+    </fx:Declarations>
+    <fx:Script><![CDATA[
+        import app.events.EApp;
+        import app.views.VBody;
+
+        [EventHandler(event="EApp.WelcomeButtonPressed")]
+        public function switchView():void{
+            trace("changing view...");
+            _nav.pushView(VBody);
+        }
+        ]]></fx:Script>
+    <s:ViewNavigator
+            id="_nav"
+            top="0" bottom="0" left="0" right="0"
+            firstView="app.views.VWelcome"
+            >
+
+    </s:ViewNavigator>
+</s:Application>
