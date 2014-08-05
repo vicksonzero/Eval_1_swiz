@@ -23,8 +23,19 @@
             var t_e_app:EApp = new EApp (EApp.INIT_VBODY);
             this._dispatcher.dispatchEvent (t_e_app);
         }
+        private function go_back():void{
+            var t_e_app:EApp = new EApp (EApp.VBODY_GO_BACK);
+            this._dispatcher.dispatchEvent (t_e_app);
+        }
 
     ]]></fx:Script>
+    <s:navigationContent>
+        <s:Button
+                label="back"
+                click="this.go_back()"
+                >
+        </s:Button>
+    </s:navigationContent>
     <s:Group top="0" bottom="0" left="0" right="0">
         <!--<s:Rect top="0" bottom="0" left="0" right="0"></s:Rect>-->
         <s:List

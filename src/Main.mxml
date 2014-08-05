@@ -26,6 +26,11 @@
             trace("changing view...");
             _nav.pushView(VBody);
         }
+        [EventHandler(event="EApp.VBodyGoBack")]
+        public function popView():void{
+            trace("popping view...");
+            this._nav.popToFirstView();
+        }
         ]]></fx:Script>
     <s:ViewNavigator
             id="_nav"
