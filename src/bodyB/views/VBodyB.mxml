@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+  Created by Dickson on 17/6/2014.
+-->
+<s:View
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        backgroundColor="0xf0f8ff"
+        addedToStage="this.h_added_to_stage()">
+    <fx:Script><![CDATA[
+        import welcome.events.EApp;
+
+        import bodyB.events.EBodyB;
+
+        import bodyB.pm.PBodyB;
+
+        [Dispatcher]
+        public var _dispatcher:IEventDispatcher;
+
+        [Inject]
+        [Bindable]
+        public var _pm:PBodyB;
+
+        private function h_added_to_stage():void {
+            trace("added to stage");
+            var t_e_app:EBodyB = new EBodyB(EBodyB.INIT);
+            this._dispatcher.dispatchEvent(t_e_app);
+        }
+
+        private function go_back():void {
+            var t_e_app:EApp = new EApp(EApp.VBODY_B_GO_BACK);
+            this._dispatcher.dispatchEvent(t_e_app);
+        }
+        ]]></fx:Script>
+    <s:navigationContent>
+        <s:Button
+                label="back"
+                click="this.go_back()"
+                >
+        </s:Button>
+    </s:navigationContent>
+    <s:Group top="0" bottom="0" left="0" right="0">
+        <!--<s:Rect top="0" bottom="0" left="0" right="0"></s:Rect>-->
+        <s:List
+                top="0" bottom="0" left="0" right="0"
+                dataProvider="{this._pm.data_names_ac}" >
+            <!--<s:itemRenderer>
+                <fx:Component>
+                    <s:Label />
+                </fx:Component>
+            </s:itemRenderer>-->
+        </s:List>
+    </s:Group>
+</s:View>

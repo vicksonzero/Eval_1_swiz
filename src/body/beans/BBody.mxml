@@ -5,11 +5,11 @@
 <swiz:BeanProvider
         xmlns:fx="http://ns.adobe.com/mxml/2009"
         xmlns:swiz="http://swiz.swizframework.org"
-        xmlns:pm="app.pm.*"
-        xmlns:models="app.models.*"
-        xmlns:controllers="app.controllers.*">
+        xmlns:pm="body.pm.*"
+        xmlns:models="body.models.*"
+        xmlns:controllers="body.controllers.*">
 
-    <pm:PBody />
-    <models:MBody />
-    <controllers:CApp />
+    <pm:PBody/>
+    <models:MBody/>
+    <controllers:CBody/>
 </swiz:BeanProvider>

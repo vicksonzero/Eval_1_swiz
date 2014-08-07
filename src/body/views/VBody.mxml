@@ -8,8 +8,11 @@
         backgroundColor="0xf0f8ff"
         addedToStage="this.h_added_to_stage()">
     <fx:Script><![CDATA[
-        import app.events.EApp;
-        import app.pm.PBody;
+        import welcome.events.EApp;
+
+        import body.events.EBody;
+
+        import body.pm.PBody;
 
         [Dispatcher]
         public var _dispatcher:IEventDispatcher;
@@ -18,17 +21,17 @@
         [Bindable]
         public var _pm:PBody;
 
-        private function h_added_to_stage():void{
+        private function h_added_to_stage():void {
             trace("added to stage");
-            var t_e_app:EApp = new EApp (EApp.INIT_VBODY);
-            this._dispatcher.dispatchEvent (t_e_app);
-        }
-        private function go_back():void{
-            var t_e_app:EApp = new EApp (EApp.VBODY_GO_BACK);
-            this._dispatcher.dispatchEvent (t_e_app);
+            var t_e_app:EBody = new EBody(EBody.INIT);
+            this._dispatcher.dispatchEvent(t_e_app);
         }
 
-    ]]></fx:Script>
+        private function go_back():void {
+            var t_e_app:EApp = new EApp(EApp.VBODY_GO_BACK);
+            this._dispatcher.dispatchEvent(t_e_app);
+        }
+        ]]></fx:Script>
     <s:navigationContent>
         <s:Button
                 label="back"

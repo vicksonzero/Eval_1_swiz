@@ -1,33 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
-               xmlns:swiz="http://swiz.swizframework.org" xmlns:app_beans="app.beans.*">
+<s:Application
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:swiz="http://swiz.swizframework.org"
+        xmlns:body_beans="body.beans.*"
+        xmlns:body_b_beans="bodyB.beans.*"
+        >
     <fx:Declarations>
 
-    <swiz:Swiz>
-        <swiz:beanProviders>
-            <app_beans:BApp />
-        </swiz:beanProviders>
-        <swiz:config>
-            <!-- The eventPackages value tells Swiz the path to your Event classes,
+        <swiz:Swiz>
+            <swiz:beanProviders>
+                <body_beans:BBody/>
+                <body_b_beans:BBodyB/>
+            </swiz:beanProviders>
+            <swiz:config>
+                <!-- The eventPackages value tells Swiz the path to your Event classes,
             and viewPackages is an optional value that speeds up the processing of display classes. -->
-            <swiz:SwizConfig
-                    eventPackages="app.events.*"
-                    viewPackages="app.views.*" />
-        </swiz:config>
+                <swiz:SwizConfig>
+                    <swiz:eventPackages>
+                        <fx:Array>
+                            <fx:String>welcome.events.*</fx:String>
+                            <fx:String>body.events.*</fx:String>
+                            <fx:String>bodyB.events.*</fx:String>
+                        </fx:Array>
+                    </swiz:eventPackages>
+                    <swiz:viewPackages>
+                        <fx:Array>
+                            <fx:String>welcome.views.*</fx:String>
+                            <fx:String>body.views.*</fx:String>
+                            <fx:String>bodyB.views.*</fx:String>
+                        </fx:Array>
+                    </swiz:viewPackages>
+                </swiz:SwizConfig>
+            </swiz:config>
 
-    </swiz:Swiz>
+        </swiz:Swiz>
     </fx:Declarations>
     <fx:Script><![CDATA[
-        import app.events.EApp;
-        import app.views.VBody;
+        import welcome.events.EApp;
+
+        import body.views.VBody;
+
+        import bodyB.views.VBodyB;
 
         [EventHandler(event="EApp.WelcomeButtonPressed")]
-        public function switchView():void{
-            trace("changing view...");
+        public function switchView():void {
+            trace("changing view to body...");
             _nav.pushView(VBody);
         }
+
+        [EventHandler(event="EApp.WelcomeButtonBPressed")]
+        public function switchViewB():void {
+            trace("changing view to body_b...");
+            _nav.pushView(VBodyB);
+        }
+
         [EventHandler(event="EApp.VBodyGoBack")]
-        public function popView():void{
+        [EventHandler(event="EApp.VBodyBGoBack")]
+        public function popView():void {
             trace("popping view...");
             this._nav.popToFirstView();
         }
@@ -35,7 +65,7 @@
     <s:ViewNavigator
             id="_nav"
             top="0" bottom="0" left="0" right="0"
-            firstView="app.views.VWelcome"
+            firstView="welcome.views.VWelcome"
             >
 
     </s:ViewNavigator>

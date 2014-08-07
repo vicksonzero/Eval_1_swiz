@@ -1,12 +1,12 @@
 /**
  * Created by Dickson on 18/6/2014.
  */
-package app.controllers {
-import app.models.MBody;
+package body.controllers {
+import body.models.MBody;
 
 import mx.collections.ArrayCollection;
 
-public class CApp {
+public class CBody {
 
     [Embed(source="/data/list.json", mimeType="application/octet-stream")]
     public var name_list_json_class:Class;
@@ -14,9 +14,9 @@ public class CApp {
     [Inject]
     public var _model:MBody;
 
-    public function CApp() {
+    public function CBody() {
     }
-    [EventHandler(event="EApp.InitVBody")]
+    [EventHandler(event="EBody.Init")]
     public function loadNameList():void{
         trace("control init list");
         var t_json_array:Array = JSON.parse (new name_list_json_class ()) as Array;

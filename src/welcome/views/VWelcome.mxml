@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+  Created by Dickson on 17/6/2014.
+-->
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+    <fx:Script><![CDATA[
+        import welcome.events.EApp;
+
+        [Dispatcher]
+        public var _dispatcher:IEventDispatcher;
+
+
+        private function h_button_pressed():void {
+            //WELCOME_BUTTON_PRESSED
+            trace("welcome button is pressed");
+            var t_e_ga:EApp = new EApp(EApp.WELCOME_BUTTON_PRESSED);
+            this._dispatcher.dispatchEvent(t_e_ga);
+        }
+
+        private function h_button_b_pressed():void {
+            //WELCOME_BUTTON_PRESSED
+            trace("welcome button is pressed");
+            var t_e_ga:EApp = new EApp(EApp.WELCOME_BUTTON_B_PRESSED);
+            this._dispatcher.dispatchEvent(t_e_ga);
+        }
+        ]]></fx:Script>
+    <s:HGroup horizontalCenter="0" verticalCenter="0">
+        <s:Button
+                label="Hello, world!"
+                horizontalCenter="0" verticalCenter="0"
+                click="this.h_button_pressed()"
+                />
+        <s:Button
+                label="Hello, user!"
+                horizontalCenter="0" verticalCenter="0"
+                click="this.h_button_b_pressed()"
+                />
+
+    </s:HGroup>
+</s:View>
